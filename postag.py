@@ -6,7 +6,7 @@
 """the features of each word from Tagged Sentence list from Brown, and transfer it into dataframe with"""
 """each feature as a column. Then I will fit a decision tree model by using information gain patten(entropy)"""
 
-import nltk
+import nltk 
 from nltk.corpus import brown
 
 from sklearn.tree import DecisionTreeClassifier
