@@ -36,9 +36,11 @@ def get_word_feature(sent, word_pos):
         'capitals_inside': sent[word_pos][1:].lower() != sent[word_pos][1:]
     }
 
+
 def get_words(tagged_sent):
     """getting the word out of the tuple"""
     return [w for w,t in tagged_sent]
+
 
 def to_dataset(tagged_sent):
     """Convert the list to dataframe as x and y. The input parameter is a list of sentence with tuple that"""
@@ -51,6 +53,7 @@ def to_dataset(tagged_sent):
             y.append(sent[i][1])
     return x, y
 
+
 def get_trained_model(x_train, y_train):
     """Since each factor in x is a dictionary, I would change it as a matrix."""
     """Since the features size is large, I used sparse matrix to save the memory."""
@@ -60,6 +63,7 @@ def get_trained_model(x_train, y_train):
     ])
     clf.fit(x_train, y_train)
     return clf
+
 
 def get_pos_tag(model, word_list):
     """This function is used to tagged a single sentence. Thus, the input parmeter 'word_list' is a list of word of"""
