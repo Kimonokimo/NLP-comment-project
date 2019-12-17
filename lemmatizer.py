@@ -1,5 +1,6 @@
 import re
 
+# regular transformation rules for nouns, verbs and adjectives
 SUBSTITUTIONS = {
     "noun": [
         ("s", ""),
@@ -34,7 +35,7 @@ SUBSTITUTIONS = {
 
 
 def load_wordnet_words():
-
+    # load all words in the WordNet Corpus as a lookup database
     words = []
     with open("wordnetWords.txt") as wn:
         for line in wn:
@@ -44,7 +45,7 @@ def load_wordnet_words():
 
 
 def load_irregular_forms(pos):
-
+    # function that loads the irregular forms given the part of speech
     irregular_forms = {}
     if pos == "noun":
         file_path = "irregular_nouns.txt"
@@ -64,7 +65,7 @@ def load_irregular_forms(pos):
 
 
 def apply_rules(token, pos):
-
+    # apply transformation rules to tokens and return a list of possible forms
     form_list = []
     for old, new in SUBSTITUTIONS[pos]:
         if token.endswith(old):
@@ -74,31 +75,36 @@ def apply_rules(token, pos):
 
 
 def lemmatize(token, pos='noun'):
+    # function that returns the lemmas of the input words
 
+    # check if the input word is in wordnet database
     word_dic = load_wordnet_words()
     if token in word_dic:
         return token
 
     word_found = False
 
+    # transform the input words and lookup the new words in the database
     possible_forms = apply_rules(token, pos)
     for form in possible_forms:
         if form in word_dic:
             return form
 
+    # check if the words are irregular
     irregular_word_dic = load_irregular_forms(pos)
     for key in irregular_word_dic.keys():
         if token in key:
             return irregular_word_dic[token]
 
+    # if the word and its transformation can not be found in the database
+    # and the word can not be find in the irregular word list, return the
+    # word itself
     if not word_found:
         return token
 
 
 def test():
-    '''
-        function for testing
-        '''
+    # function for testing
     test_word_list = ['cats', 'running']
 
     for word in test_word_list:
