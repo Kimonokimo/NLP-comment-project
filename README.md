@@ -20,7 +20,7 @@ The main method can be executed in the following file:
 * The `main.py` script is the core of the project. It loads the data set, cleans and parses the comments, vectorizes 
 the text, encodes tf-idf values, splits the data for cross validation and builds an ensemble classification model 
 consists of six logistic regression models. The `main.py` script also contains methods for splitting training and 
-testing data, mapping tag sets, and evaluate the performance.
+testing data, mapping tag sets, and evaluating the performance.
 
 This project requires the following libraries:
 * re
