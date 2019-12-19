@@ -15,6 +15,9 @@ This project contains the following files:
 calculate term frequency(tf) value and return ndarrays.
 * The `vocabulary.py` script creates a vocabulary from the dataset with stop words removed. The `Vocabulary` class
 contains method for computing the inverse document frequency (idf) value for each word in the vocabulary.
+* The `visualization.ipynb` script creates several basic data exploratory visualizations and creates interactive HTML
+visualization using `scattertext` library
+* The `visualization` folder contains the HTML visualization created by `visualization.ipynb`
 
 The main method can be executed in the following file:
 * The `main.py` script is the core of the project. It loads the data set, cleans and parses the comments, vectorizes 
@@ -30,5 +33,8 @@ This project requires the following libraries:
 * os
 * joblib
 * sklearn
+* scattertext
+* IPython
+* spacy
 
 For motivations, implementation details and results, please check out the project `report.pdf` file. 
