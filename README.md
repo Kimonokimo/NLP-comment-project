@@ -38,3 +38,6 @@ This project requires the following libraries:
 * spacy
 
 For motivations, implementation details and results, please check out the project `report.pdf` file. 
+
+### How to run our code: 
+`$ python main.py`
